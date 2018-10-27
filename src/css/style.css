@@ -1,0 +1,63 @@
+@font-face {
+    font-family: "Main font";
+    src: url(../fonts/font.ttf);
+}
+
+body {
+    background-color: #1d1f21;   
+    height: 95vh;
+}
+
+main {
+    width: 90vw;
+    height: 95vh;
+    margin: 0 auto; 
+}
+
+.container-main {
+    width: 90vw;
+    height: 95vh;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.container-main h1 {
+    color: #6c9ef8;
+    font-family: "Main font";
+    font-size: 7rem;
+    text-align: center;
+}
+
+.refs a {
+    color: #999;
+}
+
+.refs a:hover {
+    color: #bbb;
+    text-shadow: 0 0 2rem #272727; 
+}
+
+.refs {
+    position: absolute;
+    width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    bottom: 4rem;
+    letter-spacing: 2rem;
+}
+
+@media (max-width: 600px) {
+    .container-main h1 {
+        font-size: 5rem;
+    }
+    .refs {
+    font-size: 2.5rem;
+    bottom: 2.5rem;
+}
+}
