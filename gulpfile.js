@@ -26,14 +26,37 @@ gulp.task('watch', function () {
     gulp.watch('src/img/**/*', ['build:img']);
 });
 
+gulp.task('watch-min-css', function () {
+    gulp.watch('src/css/**/style.css', ['build:min-css']);
+});
+
+gulp.task('build:min-css', function () {
+    
+    return gulp.src([
+        'src/css/style.css'
+        ])
+        .pipe(autoprefixer([
+        'last 10 versions'
+        ], {
+            cascade: true
+        }))
+        .pipe(cleanCSS({
+            compatibility: 'ie8'
+        }))
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('src/css'));
+}); 
+
 gulp.task('build:css', function () {
     
     return gulp.src([
-    'src/css/style.css'
-  ])
+        'src/css/style.css'
+        ])
         .pipe(autoprefixer([
-  'last 10 versions'
-  ], {
+        'last 10 versions'
+        ], {
             cascade: true
         }))
         .pipe(cleanCSS({

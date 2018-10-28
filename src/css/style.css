@@ -19,16 +19,36 @@ main {
     height: 95vh;
     position: absolute;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+
+    color: #6c9ef8;
+    font-family: "Main font";
+    text-align: center;
+}
+
+.container-main a {
+    text-decoration: none;  
+}
+
+.container-main a:visited {
+    color: #6c9ef8;  
+}
+
+.container-main a:hover {
+    color: #79aefa;  
 }
 
 .container-main h1 {
-    color: #6c9ef8;
-    font-family: "Main font";
     font-size: 7rem;
-    text-align: center;
+    margin: 1rem 0;
+}   
+
+.container-main h2 {
+    font-size: 3rem;
+    margin: 1rem 0;
 }
 
 .refs a {
