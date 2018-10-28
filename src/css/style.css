@@ -33,12 +33,16 @@ main {
     text-decoration: none;  
 }
 
+.container-main a {
+    color: #6c9ef8;  
+}
+
 .container-main a:visited {
     color: #6c9ef8;  
 }
 
 .container-main a:hover {
-    color: #79aefa;  
+    color: #89beff;  
 }
 
 .container-main h1 {
