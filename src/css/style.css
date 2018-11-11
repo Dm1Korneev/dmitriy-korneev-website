@@ -4,59 +4,54 @@
 }
 
 body {
-    background-color: #1d1f21;   
-    height: 95vh;
+    background-color: #1d1f21;
 }
 
 main {
     width: 90vw;
-    height: 95vh;
-    margin: 0 auto; 
+    height: 90vh;
+    margin: 0 auto;
 }
 
 .container-main {
     width: 90vw;
-    height: 95vh;
+    height: 90vh;
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-
     color: #6c9ef8;
     font-family: "Main font";
     text-align: center;
 }
 
 .container-main a {
-    text-decoration: none;  
-}
-
-.container-main a {
-    color: #6c9ef8;  
+    text-decoration: none;
 }
 
 .container-main a:visited {
-    color: #6c9ef8;  
+    color: #6c9ef8;
 }
 
 .container-main a:hover {
-    color: #89beff;  
+    color: #89beff;
 }
 
-.container-main h1 {
-    font-size: 7rem;
+h1 {
     margin: 1rem 0;
 }   
 
-.container-main h2 {
+h2 {
     font-size: 3rem;
     margin: 1rem 0;
 }
 
 .refs a {
     color: #999;
+    text-decoration: none;
+    margin: 1rem;
 }
 
 .refs a:hover {
@@ -71,17 +66,51 @@ main {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
-    bottom: 4rem;
-    letter-spacing: 2rem;
+    bottom: 5vh;
+    text-align: center;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 465px) {
+    .container-main h1 {
+        font-size: 3rem;
+    }
+    .refs {
+        font-size: 1.5rem;
+    }   
+}
+
+@media (min-width: 575.98px) {
+    .container-main h1 {
+        font-size: 4rem;
+    }
+    .refs {
+        font-size: 2rem;
+    }   
+}
+
+@media (min-width: 767.98px) {
     .container-main h1 {
         font-size: 5rem;
     }
     .refs {
-    font-size: 2.5rem;
-    bottom: 2.5rem;
+        font-size: 2.5rem;
+    }
 }
+
+@media (min-width: 991.98px) {
+    .container-main h1 {
+        font-size: 5.5rem;
+    }
+    .refs {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1199.98px) {
+    .container-main h1 {
+        font-size: 7rem;
+    }
+    .refs {
+        font-size: 4rem;
+    }
 }
