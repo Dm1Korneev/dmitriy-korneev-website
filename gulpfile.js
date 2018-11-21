@@ -3,7 +3,6 @@ const   gulp = require('gulp'),
         del = require('del'),
         rename = require('gulp-rename'),
         cleanCSS = require('gulp-clean-css');
-        babel = require('gulp-babel');
 
 gulp.task('build', function (callback) {
         gulp.start('clean');  
@@ -85,9 +84,6 @@ gulp.task('build:icons', function () {
 
 gulp.task('build:js', function () {
     return gulp.src('src/js/**/*')
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
         .pipe(gulp.dest('dist/js'));
 });
 
