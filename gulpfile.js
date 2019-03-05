@@ -1,103 +1,97 @@
-const   gulp = require('gulp'),
-        autoprefixer = require('gulp-autoprefixer'),
-        del = require('del'),
-        rename = require('gulp-rename'),
-        cleanCSS = require('gulp-clean-css');
+const { parallel, series, src, dest, watch } = require("gulp"),
+  autoprefixer = require("gulp-autoprefixer"),
+  del = require("del"),
+  rename = require("gulp-rename"),
+  cleanCSS = require("gulp-clean-css");
+uglify = require("gulp-uglify");
 
-gulp.task('build', function (callback) {
-        gulp.start('clean');  
-        gulp.start('build:css');               
-        gulp.start('build:fonts');
-        gulp.start('build:icons');
-        gulp.start('build:js');
-        gulp.start('build:img');
-        gulp.start('build:html');
-        
-        return callback();
-});
+function build() {
+  return series(clean, parallel(css, fonts, icons, js, img, html));
+}
 
-gulp.task('watch', function () {
-    gulp.watch('src/css/**/style.css', ['build:css']);
-    gulp.watch('src/fonts/**/*', ['build:fonts']);
-    gulp.watch('src/icons/**/*', ['build:icons']);
-    gulp.watch('src/js/**/*', ['build:js']);
-    gulp.watch('src/*', ['build:html']);
-    gulp.watch('src/img/**/*', ['build:img']);
-});
+function watchFiles() {
+  watch("src/css/**/style.css", css);
+  watch("src/fonts/**/*", fonts);
+  watch("src/icons/**/*", icons);
+  watch("src/js/**/*", js);
+  watch("src/*", html);
+  watch("src/img/**/*", img);
+}
 
-gulp.task('watch-min-css', function () {
-    gulp.watch('src/css/**/style.css', ['build:min-css']);
-});
+function watchMinCss() {
+  watch("src/css/**/style.css", minCss);
+}
 
-gulp.task('build:min-css', function () {
-    
-    return gulp.src([
-        'src/css/style.css'
-        ])
-        .pipe(autoprefixer([
-        'last 10 versions'
-        ], {
-            cascade: true
-        }))
-        .pipe(cleanCSS({
-            compatibility: 'ie8'
-        }))
-        .pipe(rename({
-            suffix: '.min'
-        }))
-        .pipe(gulp.dest('src/css'));
-}); 
+function minCss() {
+  return src(["src/css/style.css"])
+    .pipe(
+      autoprefixer(["last 10 versions"], {
+        cascade: true
+      })
+    )
+    .pipe(
+      cleanCSS({
+        compatibility: "ie8"
+      })
+    )
+    .pipe(
+      rename({
+        suffix: ".min"
+      })
+    )
+    .pipe(dest("src/css"));
+}
 
-gulp.task('build:css', function () {
-    
-    return gulp.src([
-        'src/css/style.css'
-        ])
-        .pipe(autoprefixer([
-        'last 10 versions'
-        ], {
-            cascade: true
-        }))
-        .pipe(cleanCSS({
-            compatibility: 'ie8'
-        }))
-        .pipe(rename({
-            suffix: '.min'
-        }))
-        .pipe(gulp.dest('src/css'))
-        .pipe(gulp.dest('dist/css'));
-});
+function css() {
+  return src(["src/css/style.css"])
+    .pipe(
+      autoprefixer(["last 10 versions"], {
+        cascade: true
+      })
+    )
+    .pipe(
+      cleanCSS({
+        compatibility: "ie8"
+      })
+    )
+    .pipe(
+      rename({
+        suffix: ".min"
+      })
+    )
+    .pipe(dest("src/css"))
+    .pipe(dest("dist/css"));
+}
 
-gulp.task('clean', function () {
-    return del.sync('dist');
-});
+function clean() {
+  return del("dist");
+}
 
-gulp.task('build:fonts', function () {
-    return gulp.src('src/fonts/**/*')
-        .pipe(gulp.dest('dist/fonts'));
-});
+function fonts() {
+  return src("src/fonts/**/*").pipe(dest("dist/fonts"));
+}
 
-gulp.task('build:icons', function () {
-    return gulp.src('src/icons/**/*')
-        .pipe(gulp.dest('dist/icons'));
-});
+function icons() {
+  return src("src/icons/**/*").pipe(dest("dist/icons"));
+}
 
-gulp.task('build:js', function () {
-    return gulp.src('src/js/**/*')
-        .pipe(gulp.dest('dist/js'));
-});
+function js() {
+  return src("src/js/**/*")
+    .pipe(uglify())
+    .pipe(dest("dist/js"));
+}
 
-gulp.task('build:img', function () {
-    return gulp.src('src/img/**/*')
-        .pipe(gulp.dest('dist/img'));
-});
+function img() {
+  return src("src/img/**/*").pipe(dest("dist/img"));
+}
 
-gulp.task('build:html', function (callback) {
-    gulp.src('src/*.html')
-        .pipe(gulp.dest('dist'));
+function html(done) {
+  src("src/*.html").pipe(dest("dist"));
+  src("src/*.ico").pipe(dest("dist"));
 
-    gulp.src('src/*.ico')
-        .pipe(gulp.dest('dist')); 
-        
-    return callback();    
-});
+  done();
+}
+
+exports.default = build();
+exports.watch = watchFiles;
+exports.watchMinCss = watchMinCss;
