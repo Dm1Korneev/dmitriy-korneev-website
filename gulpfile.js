@@ -1,29 +1,29 @@
-const { parallel, series, src, dest, watch } = require("gulp"),
-  autoprefixer = require("gulp-autoprefixer"),
-  del = require("del"),
-  rename = require("gulp-rename"),
-  cleanCSS = require("gulp-clean-css");
-uglify = require("gulp-uglify");
+const { parallel, series, src, dest, watch } = require("gulp");
+const autoprefixer = require("gulp-autoprefixer");
+const del = require("del");
+const rename = require("gulp-rename");
+const cleanCSS = require("gulp-clean-css");
+const uglify = require("gulp-uglify");
+const hash = require("gulp-hash");
+const references = require("gulp-hash-references");
 
-function build() {
-  return series(clean, parallel(css, fonts, icons, js, img, html));
-}
+const build = () => series(clean, parallel(css, fonts, icons, js, img), html);
 
-function watchFiles() {
+const watchFiles = () => {
   watch("src/css/**/style.css", css);
   watch("src/fonts/**/*", fonts);
   watch("src/icons/**/*", icons);
   watch("src/js/**/*", js);
   watch("src/*", html);
   watch("src/img/**/*", img);
-}
+};
 
-function watchMinCss() {
+const watchMinCss = () => {
   watch("src/css/**/style.css", minCss);
-}
+};
 
-function minCss() {
-  return src(["src/css/style.css"])
+const minCss = () =>
+  src(["src/css/style.css"])
     .pipe(
       autoprefixer(["last 10 versions"], {
         cascade: true
@@ -40,10 +40,9 @@ function minCss() {
       })
     )
     .pipe(dest("src/css"));
-}
 
-function css() {
-  return src(["src/css/style.css"])
+const css = () =>
+  src(["src/css/style.css"])
     .pipe(
       autoprefixer(["last 10 versions"], {
         cascade: true
@@ -61,36 +60,34 @@ function css() {
     )
     .pipe(dest("src/css"))
     .pipe(dest("dist/css"));
-}
 
-function clean() {
-  return del("dist");
-}
+const clean = () => del("dist");
 
-function fonts() {
-  return src("src/fonts/**/*").pipe(dest("dist/fonts"));
-}
+const fonts = () => src("src/fonts/**/*").pipe(dest("dist/fonts"));
 
-function icons() {
-  return src("src/icons/**/*").pipe(dest("dist/icons"));
-}
+const icons = () => src("src/icons/**/*").pipe(dest("dist/icons"));
 
-function js() {
-  return src("src/js/**/*")
+const js = () =>
+  src("src/js/**/*")
+    .pipe(hash())
     .pipe(uglify())
-    .pipe(dest("dist/js"));
-}
+    .pipe(dest("dist/js"))
+    .pipe(hash.manifest("asset-manifest.json"))
+    .pipe(dest("dist"));
 
-function img() {
-  return src("src/img/**/*").pipe(dest("dist/img"));
-}
+const img = () => src("src/img/**/*").pipe(dest("dist/img"));
 
-function html(done) {
-  src("src/*.html").pipe(dest("dist"));
+const html = done => {
+  src("src/*.html")
+    .pipe(references("dist/asset-manifest.json"))
+    .pipe(dest("dist"));
+
   src("src/*.ico").pipe(dest("dist"));
 
+  del("dist/asset-manifest.json");
+
   done();
-}
+};
 
 exports.default = build();
 exports.watch = watchFiles;
