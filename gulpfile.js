@@ -7,7 +7,8 @@ const uglify = require("gulp-uglify");
 const hash = require("gulp-hash");
 const references = require("gulp-hash-references");
 
-const build = () => series(clean, parallel(css, fonts, icons, js, img), html);
+const build = () =>
+  series(clean, parallel(css, fonts, icons, js, img, sw), parallel(html));
 
 const watchFiles = () => {
   watch("src/css/**/style.css", css);
@@ -73,6 +74,11 @@ const js = () =>
     .pipe(uglify())
     .pipe(dest("dist/js"))
     .pipe(hash.manifest("asset-manifest.json"))
+    .pipe(dest("dist"));
+
+const sw = () =>
+  src("src/sw.js")
+    .pipe(uglify())
     .pipe(dest("dist"));
 
 const img = () => src("src/img/**/*").pipe(dest("dist/img"));
