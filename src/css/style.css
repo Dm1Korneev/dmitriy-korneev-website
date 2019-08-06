@@ -1,116 +1,125 @@
 @font-face {
-    font-family: "Main font";
-    src: url(../fonts/font.ttf);
+  font-family: "Main font";
+  font-display: fallback;
+  src: url(../fonts/font.ttf);
 }
 
 body {
-    background-color: #1d1f21;
+  background-color: #1d1f21;
 }
 
 main {
-    width: 90vw;
-    height: 90vh;
-    margin: 0 auto;
+  width: 90vw;
+  height: 90vh;
+  margin: 0 auto;
 }
 
 .container-main {
-    width: 90vw;
-    height: 90vh;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    color: #6c9ef8;
-    font-family: "Main font";
-    text-align: center;
+  width: 90vw;
+  height: 90vh;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: #6c9ef8;
+  font-family: "Main font";
+  text-align: center;
 }
 
 .container-main a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .container-main a:visited {
-    color: #6c9ef8;
+  color: #6c9ef8;
 }
 
 .container-main a:hover {
-    color: #89beff;
+  color: #89beff;
 }
 
 h1 {
-    margin: 1rem 0;
-}   
+  margin: 1rem 0;
+}
 
 h2 {
-    font-size: 3rem;
-    margin: 1rem 0;
+  font-size: 3rem;
+  margin: 1rem 0;
+}
+
+.refs div {
+  margin: 1rem;
+  width: 3rem;
 }
 
 .refs a {
-    color: #999;
-    text-decoration: none;
-    margin: 1rem;
+  color: #999;
 }
 
-.refs a:hover {
-    color: #bbb;
-    text-shadow: 0 0 2rem #272727; 
+.refs svg:hover {
+  color: #bbb;
+  filter: drop-shadow(0 0 2rem #555);
 }
 
 .refs {
-    position: absolute;
-    width: 90vw;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    bottom: 5vh;
-    text-align: center;
+  position: absolute;
+  width: 90vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  bottom: 5vh;
+  text-align: center;
 }
 
-@media (min-width: 465px) {
-    .container-main h1 {
-        font-size: 3rem;
-    }
-    .refs {
-        font-size: 1.5rem;
-    }   
+@media (max-width: 575.98px) {
+  .container-main h1 {
+    font-size: 3rem;
+  }
+  .refs div {
+    margin: 0.75rem;
+    width: 2rem;
+  }
 }
 
 @media (min-width: 575.98px) {
-    .container-main h1 {
-        font-size: 4rem;
-    }
-    .refs {
-        font-size: 2rem;
-    }   
+  .container-main h1 {
+    font-size: 4rem;
+  }
+  .refs div {
+    margin: 0.75rem;
+    width: 2rem;
+  }
 }
 
 @media (min-width: 767.98px) {
-    .container-main h1 {
-        font-size: 5rem;
-    }
-    .refs {
-        font-size: 2.5rem;
-    }
+  .container-main h1 {
+    font-size: 5rem;
+  }
+  .refs div {
+    margin: 1rem;
+    width: 2.5rem;
+  }
 }
 
 @media (min-width: 991.98px) {
-    .container-main h1 {
-        font-size: 5.5rem;
-    }
-    .refs {
-        font-size: 3rem;
-    }
+  .container-main h1 {
+    font-size: 5.5rem;
+  }
+  .refs div {
+    margin: 1rem;
+    width: 3rem;
+  }
 }
 
 @media (min-width: 1199.98px) {
-    .container-main h1 {
-        font-size: 7rem;
-    }
-    .refs {
-        font-size: 4rem;
-    }
+  .container-main h1 {
+    font-size: 7rem;
+  }
+  .refs div {
+    margin: 1rem;
+    width: 4rem;
+  }
 }
