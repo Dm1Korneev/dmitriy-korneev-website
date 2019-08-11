@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Main font";
   font-display: fallback;
-  src: url(../fonts/font.ttf);
+  src: url(./fonts/font.ttf);
 }
 
 body {

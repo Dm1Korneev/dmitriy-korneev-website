@@ -1,26 +1,37 @@
 {
-  "name": "portfolio",
-  "version": "1.0.0",
-  "description": "my portfolio",
-  "main": "index.js",
+  "name": "my-site-cra",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react-scripts": "3.0.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Dm1Korneev/PortfolioWebPage.git"
+  "eslintConfig": {
+    "extends": "eslint-config-airbnb-base",
+    "env": {
+      "browser": true
+    }
   },
-  "author": "Dmitriy Korneev",
-  "license": "ISC",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
-    "del": "^3.0.0",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-clean-css": "^3.10.0",
-    "gulp-hash": "^4.2.2",
-    "gulp-hash-references": "^3.0.1",
-    "gulp-rename": "^1.4.0",
-    "gulp-uglify": "^3.0.2"
+    "eslint-config-airbnb-base": "^14.0.0",
+    "html-loader": "^0.5.5",
+    "react": "^16.9.0"
   }
 }
