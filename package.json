@@ -2,6 +2,7 @@
   "name": "my-site-cra",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dmitriykorneev.com",
   "dependencies": {
     "react-scripts": "3.0.1"
   },
