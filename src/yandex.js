@@ -1,33 +1,11 @@
-/* eslint-disable no-undef */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-empty */
+/* eslint-disable */
 
-((d, w, c) => {
-  (w[c] = w[c] || []).push(() => {
-    try {
-      w.yaCounter49252267 = new Ya.Metrika2({
-        id: 49252267,
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true,
-        webvisor: true,
-      });
-    } catch (e) {}
-  });
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-  const n = d.getElementsByTagName('script')[0];
-  const s = d.createElement('script');
-  const f = () => {
-    n.parentNode.insertBefore(s, n);
-  };
-  s.type = 'text/javascript';
-  s.async = true;
-  s.src = 'https://mc.yandex.ru/metrika/tag.js';
-
-  if (w.opera == '[object Opera]') {
-    d.addEventListener('DOMContentLoaded', f, false);
-  } else {
-    f();
-  }
-})(document, window, 'yandex_metrika_callbacks2');
+  ym(50900396, "init", {
+    clickmap:true,
+    trackLinks:true,
+    accurateTrackBounce:true
+});
