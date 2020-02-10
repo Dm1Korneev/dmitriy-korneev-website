@@ -24,11 +24,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node }}
-    - name: 'Install yarn'
-      run: npm install -g yarn
     - name: 'Install dependencies'
-      run: yarn
+      run: npm ci
     #- name: 'Run tests'
-    #  run: yarn test
+    #  run: npm run test
     - name: 'Deploy to "gh-pages" branch'
-      run: yarn deploy
+      run: npm run deploy
