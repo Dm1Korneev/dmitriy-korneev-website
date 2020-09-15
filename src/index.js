@@ -1,6 +1,6 @@
 import './index.css';
 import './yandex';
-// import './google';
+import './google';
 
 import * as serviceWorker from './serviceWorker';
 
