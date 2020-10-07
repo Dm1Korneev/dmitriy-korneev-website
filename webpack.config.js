@@ -27,7 +27,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: './index.html',
+      template: './index.html.ejs',
       minify: {
         collapseWhitespace: isProd,
       },
@@ -36,9 +36,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'err404.html',
       template: './err404.html',
-      minify: {
-        collapseWhitespace: isProd,
-      },
       chunks: ['err404'],
     }),
     new MiniCssExtractPlugin({
