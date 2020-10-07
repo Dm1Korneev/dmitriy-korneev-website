@@ -1,10 +1,7 @@
-/* eslint-disable no-undef */
+/* eslint-disable */
 
 window.dataLayer = window.dataLayer || [];
-
-function gtag(...args) {
-  dataLayer.push(args);
-}
+function gtag() { dataLayer.push(arguments); }
 gtag('js', new Date());
 
 gtag('config', 'UA-120921352-1');
