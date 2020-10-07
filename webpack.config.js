@@ -14,7 +14,7 @@ module.exports = {
   mode: isDev ? 'development' : 'production',
   entry: {
     main: './index.js',
-    err404: './err404.js',
+    404: './404.js',
   },
   output: {
     filename: '[name].[hash:6].js',
@@ -34,9 +34,9 @@ module.exports = {
       chunks: ['main'],
     }),
     new HtmlWebpackPlugin({
-      filename: 'err404.html',
-      template: './err404.html',
-      chunks: ['err404'],
+      filename: '404.html',
+      template: './404.html',
+      chunks: ['404'],
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash:6].css',
