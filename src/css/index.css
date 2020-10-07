@@ -1,13 +1,13 @@
 @font-face {
   font-family: "Lucida Console";
   font-display: fallback;
-  src: url("./fonts/LucidaConsole.eot"); /* IE9*/
-  src: url("./fonts/LucidaConsole.eot?#iefix") format("embedded-opentype"),
-    /* IE6-IE8 */ url("./fonts/LucidaConsole.woff2") format("woff2"),
-    /* chrome、firefox */ url("./fonts/LucidaConsole.woff") format("woff"),
-    /* chrome、firefox */ url("./fonts/LucidaConsole.ttf") format("truetype"),
+  src: url("../fonts/LucidaConsole.eot"); /* IE9*/
+  src: url("../fonts/LucidaConsole.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/LucidaConsole.woff2") format("woff2"),
+    /* chrome、firefox */ url("../fonts/LucidaConsole.woff") format("woff"),
+    /* chrome、firefox */ url("../fonts/LucidaConsole.ttf") format("truetype"),
     /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-      url("./fonts/LucidaConsole.svg#Lucida Console") format("svg"); /* iOS 4.1- */
+      url("../fonts/LucidaConsole.svg#Lucida Console") format("svg"); /* iOS 4.1- */
 }
 
 body {
