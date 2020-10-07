@@ -6,6 +6,7 @@
   "dependencies": {},
   "scripts": {
     "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
     "build": "webpack --mode production",
     "dev": "cross-env NODE_ENV=development webpack --mode development"
   },
