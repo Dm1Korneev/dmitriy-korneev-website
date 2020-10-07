@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://dmitriykorneev.com",
-  "dependencies": {},
+  "dependencies": {
+    "workbox-routing": "^5.1.4",
+    "workbox-strategies": "^5.1.4"
+  },
   "scripts": {
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build",
     "build": "webpack --mode production",
-    "dev": "cross-env NODE_ENV=development webpack --mode development"
+    "dev": "cross-env NODE_ENV=development webpack --mode development",
+    "start": "webpack-dev-server --open"
   },
   "eslintConfig": {
     "extends": "eslint-config-airbnb-base",
@@ -51,6 +55,7 @@
     "terser-webpack-plugin": "^4.2.2",
     "url-loader": "^4.1.0",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }
