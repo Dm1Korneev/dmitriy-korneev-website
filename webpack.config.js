@@ -5,11 +5,12 @@ const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 
-const baseConfig = {
+module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: isDev ? 'development' : 'production',
   devServer: {
@@ -18,6 +19,44 @@ const baseConfig = {
   optimization: isDev ? {} : {
     minimizer: [new OptimizeCssAssetsPlugin(), new TerserPlugin()],
   },
+  entry: {
+    main: './index.js',
+    404: './404.js',
+  },
+  output: {
+    filename: '[name].[hash:6].js',
+    path: path.resolve(__dirname, 'build'),
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: './index.html.ejs',
+      minify: {
+        collapseWhitespace: isProd,
+      },
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: '404.html',
+      template: './404.html',
+      chunks: ['404'],
+    }),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.join(__dirname, 'src/service-worker.js'),
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash:6].css',
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: './public', to: '.' },
+        { from: './icons', to: './icons' },
+        { from: './favicon.ico', to: './favicon.ico' },
+        { from: './manifest.json', to: './manifest.json' },
+      ],
+    }),
+  ],
   module: {
     rules: [
       {
@@ -67,49 +106,3 @@ const baseConfig = {
     ],
   },
 };
-
-module.exports = () => [{
-  ...baseConfig,
-  entry: {
-    main: './index.js',
-    404: './404.js',
-  },
-  output: {
-    filename: '[name].[hash:6].js',
-    path: path.resolve(__dirname, 'build'),
-  },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: './index.html.ejs',
-      minify: {
-        collapseWhitespace: isProd,
-      },
-      chunks: ['main'],
-    }),
-    new HtmlWebpackPlugin({
-      filename: '404.html',
-      template: './404.html',
-      chunks: ['404'],
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].[hash:6].css',
-    }),
-    new CopyPlugin({
-      patterns: [
-        { from: './public', to: '.' },
-        { from: './icons', to: './icons' },
-        { from: './favicon.ico', to: './favicon.ico' },
-        { from: './manifest.json', to: './manifest.json' },
-      ],
-    }),
-  ],
-}, {
-  ...baseConfig,
-  entry: './service-worker.js',
-  output: {
-    filename: 'service-worker.js',
-    path: path.resolve(__dirname, 'build'),
-  },
-}];
