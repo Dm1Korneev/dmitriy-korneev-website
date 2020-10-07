@@ -43,7 +43,7 @@ module.exports = {
       chunks: ['404'],
     }),
     new ServiceWorkerWebpackPlugin({
-      entry: path.join(__dirname, 'src/service-worker.js'),
+      entry: path.join(__dirname, 'src/sw.js'),
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash:6].css',
