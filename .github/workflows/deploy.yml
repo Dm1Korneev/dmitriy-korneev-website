@@ -28,7 +28,7 @@ jobs:
       run: npm install -g yarn
     - name: 'Install dependencies'
       run: yarn
-    #- name: 'Run tests'
-    #  run: npm run test
+    - name: 'Run tests'
+      run: yarn test
     - name: 'Deploy to "gh-pages" branch'
-      run: npm run deploy
+      run: yarn run deploy
