@@ -5,7 +5,7 @@ describe('Main', () => {
       cy.visit('/');
       cy.contains('Dmitriy Korneev');
 
-      // freecodecampgithub
+      // github
       cy.get('a[aria-label="link to my github.com account"]')
         .should('have.attr', 'target', '_blank')
         .and('have.attr', 'href', 'https://github.com/Dm1Korneev');
