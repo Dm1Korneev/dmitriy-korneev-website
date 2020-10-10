@@ -54,7 +54,7 @@ describe('Main', () => {
       cy.get('a[aria-label="link for send email to me"]')
         .and('have.attr', 'href', 'mailto:Dm1Korneev@gmail.com');
 
-      cy.matchImageSnapshot();
+      // cy.matchImageSnapshot();
     });
   });
 });
