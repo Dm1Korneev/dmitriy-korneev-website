@@ -16,6 +16,7 @@ module.exports = {
   mode: isDev ? 'development' : 'production',
   devServer: {
     contentBase: './build',
+    disableHostCheck: true,
   },
   optimization: isDev ? {} : {
     minimizer: [new OptimizeCssAssetsPlugin(), new TerserPlugin()],
