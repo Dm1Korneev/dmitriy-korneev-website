@@ -5,10 +5,13 @@
   "homepage": "https://dmitriykorneev.com",
   "scripts": {
     "build": "webpack --mode production",
-    "predeploy": "npm run build",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
-    "dev": "cross-env NODE_ENV=development webpack --mode development",
-    "start": "webpack-dev-server --open"
+    "lint": "eslint src/ --color",
+    "start": "webpack-dev-server",
+    "test": "start-server-and-test start http://localhost:8080 cypress:run"
   },
   "browserslist": {
     "production": [
@@ -41,9 +44,13 @@
     "copy-webpack-plugin": "^6.2.0",
     "cross-env": "^7.0.2",
     "css-loader": "^4.3.0",
+    "cypress": "^5.3.0",
+    "cypress-image-snapshot": "^3.1.1",
     "eslint": "^7.10.0",
     "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-import": "^2.22.1",
+    "eslint-webpack-plugin": "^2.1.0",
     "extract-loader": "^5.1.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^6.1.0",
@@ -53,6 +60,7 @@
     "interpolate-html-plugin": "^3.0.0",
     "mini-css-extract-plugin": "^0.11.3",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "start-server-and-test": "^1.11.5",
     "terser-webpack-plugin": "^4.2.2",
     "url-loader": "^4.1.0",
     "webpack": "^4.44.2",
